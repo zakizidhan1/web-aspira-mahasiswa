@@ -4,6 +4,13 @@ import { Clock, CheckCircle } from "lucide-react";
 // For caching, revalidate every 60 seconds
 export const revalidate = 60;
 
+type Profile = { full_name: string | null; nim: string | null } | null;
+
+function getProfile(profiles: unknown): Profile {
+  if (Array.isArray(profiles)) return (profiles[0] as Profile) ?? null;
+  return profiles as Profile;
+}
+
 export default async function AspirasiPage() {
   const supabase = await createClient();
 
@@ -41,41 +48,44 @@ export default async function AspirasiPage() {
         </div>
       ) : (
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {aspirations.map((item) => (
-            <div key={item.id} className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/10 transition-colors group relative overflow-hidden">
-              <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-[50px] group-hover:bg-indigo-500/20 transition-colors"></div>
-              
-              <div className="flex justify-between items-start mb-4 relative z-10">
-                <h3 className="text-xl font-semibold text-white group-hover:text-indigo-300 transition-colors">
-                  {item.title}
-                </h3>
-                <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-medium border border-emerald-500/30">
-                  <CheckCircle className="w-3 h-3" />
-                  <span>Disetujui</span>
-                </span>
-              </div>
-              
-              <p className="text-indigo-100/80 mb-6 line-clamp-4 relative z-10">
-                {item.content}
-              </p>
-              
-              <div className="flex items-center justify-between text-sm text-indigo-300/60 pt-4 border-t border-white/10 relative z-10">
-                <div className="flex items-center space-x-2">
-                  <div className="w-6 h-6 rounded-full bg-indigo-500/30 flex items-center justify-center text-xs font-bold text-indigo-200">
-                    {item.profiles?.full_name?.charAt(0) || "M"}
-                  </div>
-                  <span>{item.profiles?.full_name || "Mahasiswa"}</span>
+          {aspirations.map((item) => {
+            const profile = getProfile(item.profiles);
+            return (
+              <div key={item.id} className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/10 transition-colors group relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-[50px] group-hover:bg-indigo-500/20 transition-colors"></div>
+
+                <div className="flex justify-between items-start mb-4 relative z-10">
+                  <h3 className="text-xl font-semibold text-white group-hover:text-indigo-300 transition-colors">
+                    {item.title}
+                  </h3>
+                  <span className="inline-flex items-center space-x-1 px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 text-xs font-medium border border-emerald-500/30">
+                    <CheckCircle className="w-3 h-3" />
+                    <span>Disetujui</span>
+                  </span>
                 </div>
-                <span>
-                  {new Date(item.created_at).toLocaleDateString("id-ID", {
-                    day: "numeric",
-                    month: "short",
-                    year: "numeric"
-                  })}
-                </span>
+
+                <p className="text-indigo-100/80 mb-6 line-clamp-4 relative z-10">
+                  {item.content}
+                </p>
+
+                <div className="flex items-center justify-between text-sm text-indigo-300/60 pt-4 border-t border-white/10 relative z-10">
+                  <div className="flex items-center space-x-2">
+                    <div className="w-6 h-6 rounded-full bg-indigo-500/30 flex items-center justify-center text-xs font-bold text-indigo-200">
+                      {profile?.full_name?.charAt(0) || "M"}
+                    </div>
+                    <span>{profile?.full_name || "Mahasiswa"}</span>
+                  </div>
+                  <span>
+                    {new Date(item.created_at).toLocaleDateString("id-ID", {
+                      day: "numeric",
+                      month: "short",
+                      year: "numeric"
+                    })}
+                  </span>
+                </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </main>

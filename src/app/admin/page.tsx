@@ -3,6 +3,13 @@ import { redirect } from "next/navigation";
 import { Check, X, User, ShieldAlert } from "lucide-react";
 import { updateAspirationStatus } from "./actions";
 
+type Profile = { full_name: string | null; nim: string | null; email: string | null } | null;
+
+function getProfile(profiles: unknown): Profile {
+  if (Array.isArray(profiles)) return (profiles[0] as Profile) ?? null;
+  return profiles as Profile;
+}
+
 export default async function AdminPage() {
   const supabase = await createClient();
   const { data: { user } } = await supabase.auth.getUser();
@@ -49,43 +56,46 @@ export default async function AdminPage() {
         </div>
       ) : (
         <div className="space-y-6">
-          {aspirations.map((item) => (
-            <div key={item.id} className="bg-white/10 border border-white/10 rounded-2xl p-6 backdrop-blur-md">
-              <div className="flex flex-col md:flex-row gap-6">
-                <div className="flex-1">
-                  <div className="flex items-center space-x-2 text-xs text-indigo-300 mb-2">
-                    <User className="w-3 h-3" />
-                    <span className="font-medium">{item.profiles?.full_name}</span>
-                    <span>•</span>
-                    <span>{item.profiles?.nim}</span>
+          {aspirations.map((item) => {
+            const itemProfile = getProfile(item.profiles);
+            return (
+              <div key={item.id} className="bg-white/10 border border-white/10 rounded-2xl p-6 backdrop-blur-md">
+                <div className="flex flex-col md:flex-row gap-6">
+                  <div className="flex-1">
+                    <div className="flex items-center space-x-2 text-xs text-indigo-300 mb-2">
+                      <User className="w-3 h-3" />
+                      <span className="font-medium">{itemProfile?.full_name}</span>
+                      <span>•</span>
+                      <span>{itemProfile?.nim}</span>
+                    </div>
+                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                    <p className="text-indigo-100/80 text-sm whitespace-pre-wrap">{item.content}</p>
                   </div>
-                  <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
-                  <p className="text-indigo-100/80 text-sm whitespace-pre-wrap">{item.content}</p>
-                </div>
-                
-                <div className="flex md:flex-col gap-2 justify-end">
-                  <form action={async () => {
-                    'use server'
-                    await updateAspirationStatus(item.id, 'approved')
-                  }}>
-                    <button className="flex items-center space-x-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg text-sm font-bold transition-all w-full justify-center">
-                      <Check className="w-4 h-4" />
-                      <span>Setujui</span>
-                    </button>
-                  </form>
-                  <form action={async () => {
-                    'use server'
-                    await updateAspirationStatus(item.id, 'rejected')
-                  }}>
-                    <button className="flex items-center space-x-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-200 border border-red-500/30 rounded-lg text-sm font-bold transition-all w-full justify-center">
-                      <X className="w-4 h-4" />
-                      <span>Tolak</span>
-                    </button>
-                  </form>
+
+                  <div className="flex md:flex-col gap-2 justify-end">
+                    <form action={async () => {
+                      'use server'
+                      await updateAspirationStatus(item.id, 'approved')
+                    }}>
+                      <button className="flex items-center space-x-2 px-4 py-2 bg-emerald-500 hover:bg-emerald-600 text-white rounded-lg text-sm font-bold transition-all w-full justify-center">
+                        <Check className="w-4 h-4" />
+                        <span>Setujui</span>
+                      </button>
+                    </form>
+                    <form action={async () => {
+                      'use server'
+                      await updateAspirationStatus(item.id, 'rejected')
+                    }}>
+                      <button className="flex items-center space-x-2 px-4 py-2 bg-red-500/20 hover:bg-red-500/30 text-red-200 border border-red-500/30 rounded-lg text-sm font-bold transition-all w-full justify-center">
+                        <X className="w-4 h-4" />
+                        <span>Tolak</span>
+                      </button>
+                    </form>
+                  </div>
                 </div>
               </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       )}
     </main>
