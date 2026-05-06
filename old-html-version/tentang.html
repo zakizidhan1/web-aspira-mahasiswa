@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tentang Kami - SuaraKita</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Background Glows -->
+    <div class="bg-glow glow-1"></div>
+    <div class="bg-glow glow-2"></div>
+
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <nav class="glass-panel">
+                <a href="index.html" class="logo">
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#gradient)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <defs>
+                            <linearGradient id="gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" stop-color="#3b82f6" />
+                                <stop offset="100%" stop-color="#fbbf24" />
+                            </linearGradient>
+                        </defs>
+                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path>
+                    </svg>
+                    SuaraKita
+                </a>
+                <div class="nav-links">
+                    <a href="index.html">Beranda</a>
+                    <a href="tentang.html" style="color: var(--secondary-color);">Tentang Kami</a>
+                    <a href="daftar.html">Daftar Aspirasi</a>
+                    <a href="form.html">Tulis Aspirasi</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Main Content -->
+        <main>
+            <section style="margin-top: 40px; margin-bottom: 40px;">
+                <div class="glass-panel" style="padding: 40px;">
+                    <h2 style="text-align: center; margin-bottom: 40px; color: var(--secondary-color);">Tentang Kami</h2>
+                    
+                    <div style="display: flex; flex-wrap: wrap; gap: 30px;">
+                        <!-- Visi -->
+                        <div style="flex: 1; min-width: 280px; background: rgba(0,0,0,0.2); padding: 30px; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s;">
+                            <h3 style="color: white; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; font-size: 1.4rem;">
+                                <span style="font-size: 2rem;">🎯</span> Visi
+                            </h3>
+                            <p style="color: var(--text-muted); font-size: 1.1rem; line-height: 1.6;">
+                                Menjadi tempat utama bagi mahasiswa untuk menyampaikan aspirasi secara terbuka, mudah, dan terpercaya.
+                            </p>
+                        </div>
+                        
+                        <!-- Misi -->
+                        <div style="flex: 1; min-width: 280px; background: rgba(0,0,0,0.2); padding: 30px; border-radius: 16px; border: 1px solid var(--glass-border); transition: transform 0.3s;">
+                            <h3 style="color: white; margin-bottom: 20px; display: flex; align-items: center; gap: 12px; font-size: 1.4rem;">
+                                <span style="font-size: 2rem;">🚀</span> Misi
+                            </h3>
+                            <ul style="color: var(--text-muted); padding-left: 20px; line-height: 2; font-size: 1.1rem;">
+                                <li>Menyediakan platform yang simpel dan mudah digunakan</li>
+                                <li>Menampung semua aspirasi mahasiswa tanpa terkecuali</li>
+                                <li>Membantu menyampaikan suara mahasiswa ke pihak terkait</li>
+                                <li>Menampilkan proses aspirasi secara transparan</li>
+                                <li>Mendorong perubahan kampus ke arah yang lebih baik</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer>
+            <p>&copy; 2026 SuaraKita - Platform Aspirasi Mahasiswa. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
