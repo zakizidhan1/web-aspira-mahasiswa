@@ -54,6 +54,25 @@ CREATE POLICY "Users can update their own pending aspirations"
   ON public.aspirations FOR UPDATE 
   USING (auth.uid() = user_id AND status = 'pending');
 
+-- Admin policies — allow admins to view and moderate ALL aspirations
+CREATE POLICY "Admins can view all aspirations"
+  ON public.aspirations FOR SELECT
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles
+      WHERE id = auth.uid() AND role = 'admin'
+    )
+  );
+
+CREATE POLICY "Admins can update all aspirations"
+  ON public.aspirations FOR UPDATE
+  USING (
+    EXISTS (
+      SELECT 1 FROM public.profiles
+      WHERE id = auth.uid() AND role = 'admin'
+    )
+  );
+
 -- Trigger to create a profile automatically when a user signs up
 CREATE OR REPLACE FUNCTION public.handle_new_user() 
 RETURNS TRIGGER AS $$
