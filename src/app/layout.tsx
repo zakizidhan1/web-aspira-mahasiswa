@@ -18,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
-      <body className={`${inter.className} bg-gradient-to-br from-slate-900 via-indigo-950 to-slate-900 text-slate-100 min-h-screen antialiased`}>
+      <body className={`${inter.className} bg-gradient-to-br from-slate-900 via-yellow-950 to-slate-900 text-slate-100 min-h-screen antialiased`}>
         <Navbar />
         {children}
         <Toaster position="bottom-right" />

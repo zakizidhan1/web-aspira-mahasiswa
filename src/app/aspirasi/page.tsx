@@ -28,10 +28,12 @@ export default async function AspirasiPage() {
     .order("created_at", { ascending: false });
 
   return (
-    <main className="max-w-5xl mx-auto px-4 py-12 min-h-screen">
-      <div className="text-center mb-12">
-        <h1 className="text-4xl font-bold text-white mb-4">Aspirasi Mahasiswa</h1>
-        <p className="text-indigo-200">Daftar aspirasi yang telah disetujui dan dipublikasikan.</p>
+    <div className="bg-[url('/images/aspirasi.png')] bg-no-repeat bg-cover bg-center relative">
+    <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/50" />
+    <main className="max-w-5xl mx-auto px-4 py-12 min-h-screen relative z-10">
+      <div className="relative z-10 text-center mb-12">
+        <h1 className=" text-4xl font-bold text-white mb-4">Aspirasi Mahasiswa</h1>
+        <p className=" text-indigo-200">Daftar aspirasi yang telah disetujui dan dipublikasikan.</p>
       </div>
 
       {error && (
@@ -51,7 +53,7 @@ export default async function AspirasiPage() {
           {aspirations.map((item) => {
             const profile = getProfile(item.profiles);
             return (
-              <div key={item.id} className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/10 transition-colors group relative overflow-hidden">
+              <div key={item.id} className="bg-black border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-black/10 transition-colors group relative overflow-hidden">
                 <div className="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-full blur-[50px] group-hover:bg-indigo-500/20 transition-colors"></div>
 
                 <div className="flex justify-between items-start mb-4 relative z-10">
@@ -89,5 +91,6 @@ export default async function AspirasiPage() {
         </div>
       )}
     </main>
+    </div>
   );
 }

@@ -4,6 +4,7 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { LogOut, Menu, X } from 'lucide-react'
 import { signOut } from '@/app/auth/actions'
+import Image from 'next/image'
 
 interface NavbarClientProps {
   isLoggedIn: boolean
@@ -16,19 +17,19 @@ export default function NavbarClient({ isLoggedIn, isAdmin }: NavbarClientProps)
   const closeMenu = () => setIsOpen(false)
 
   return (
-    <nav className="sticky top-0 z-50 w-full backdrop-blur-md bg-white/10 border-b border-white/10">
+    <nav className="sticky top-0 z-50 w-full bg-red-700 backdrop-blur-md border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
-          <Link href="/" className="text-xl font-bold text-white tracking-tight" onClick={closeMenu}>
-            Aspirasi<span className="text-indigo-400">UNSIKA</span>
+          <Link href="/" className="text-xl font-bold text-white tracking-tight flex justify-center items-center gap-2" onClick={closeMenu}>
+            <Image className='w-[30px]' src="/images/logo.png" alt="logo" width={100} height={100}/>Aspirasi<span className="text-yellow-400">UNSIKA</span>
           </Link>
 
           {/* Desktop Nav */}
           <div className="hidden sm:flex items-center space-x-4">
             <Link
               href="/aspirasi"
-              className="text-indigo-100 hover:text-white transition-colors text-sm font-medium"
+              className="text-yellow-100 hover:text-white transition-colors text-sm font-medium"
             >
               Semua Aspirasi
             </Link>
@@ -36,7 +37,7 @@ export default function NavbarClient({ isLoggedIn, isAdmin }: NavbarClientProps)
               <>
                 <Link
                   href="/dashboard"
-                  className="text-indigo-100 hover:text-white transition-colors text-sm font-medium"
+                  className="text-yellow-100 hover:text-white transition-colors text-sm font-medium"
                 >
                   Dashboard
                 </Link>
@@ -62,13 +63,13 @@ export default function NavbarClient({ isLoggedIn, isAdmin }: NavbarClientProps)
               <>
                 <Link
                   href="/login"
-                  className="px-4 py-2 text-sm font-medium text-white hover:text-indigo-200 transition-colors"
+                  className="px-4 py-2 text-sm font-medium text-white hover:text-yellow-200 transition-colors"
                 >
                   Masuk
                 </Link>
                 <Link
                   href="/register"
-                  className="px-4 py-2 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium transition-all shadow-lg shadow-indigo-500/30"
+                  className="px-4 py-2 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium transition-all shadow-lg shadow-yellow-500/30"
                 >
                   Daftar
                 </Link>
@@ -89,15 +90,14 @@ export default function NavbarClient({ isLoggedIn, isAdmin }: NavbarClientProps)
 
       {/* Mobile Dropdown Menu */}
       <div
-        className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${
-          isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
-        }`}
+        className={`sm:hidden overflow-hidden transition-all duration-300 ease-in-out ${isOpen ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'
+          }`}
       >
         <div className="px-4 pb-4 pt-2 space-y-2 border-t border-white/10 bg-slate-950/80 backdrop-blur-lg">
           <Link
             href="/aspirasi"
             onClick={closeMenu}
-            className="block px-4 py-3 rounded-lg text-indigo-100 hover:text-white hover:bg-white/10 transition-all text-sm font-medium"
+            className="block px-4 py-3 rounded-lg text-yellow-100 hover:text-white hover:bg-white/10 transition-all text-sm font-medium"
           >
             Semua Aspirasi
           </Link>
@@ -106,7 +106,7 @@ export default function NavbarClient({ isLoggedIn, isAdmin }: NavbarClientProps)
               <Link
                 href="/dashboard"
                 onClick={closeMenu}
-                className="block px-4 py-3 rounded-lg text-indigo-100 hover:text-white hover:bg-white/10 transition-all text-sm font-medium"
+                className="block px-4 py-3 rounded-lg text-yellow-100 hover:text-white hover:bg-white/10 transition-all text-sm font-medium"
               >
                 Dashboard
               </Link>
@@ -135,14 +135,14 @@ export default function NavbarClient({ isLoggedIn, isAdmin }: NavbarClientProps)
               <Link
                 href="/login"
                 onClick={closeMenu}
-                className="block px-4 py-3 rounded-lg text-indigo-100 hover:text-white hover:bg-white/10 transition-all text-sm font-medium"
+                className="block px-4 py-3 rounded-lg text-yellow-100 hover:text-white hover:bg-white/10 transition-all text-sm font-medium"
               >
                 Masuk
               </Link>
               <Link
                 href="/register"
                 onClick={closeMenu}
-                className="block px-4 py-3 rounded-lg bg-indigo-500 hover:bg-indigo-600 text-white text-sm font-medium transition-all text-center shadow-lg shadow-indigo-500/30"
+                className="block px-4 py-3 rounded-lg bg-yellow-500 hover:bg-yellow-600 text-white text-sm font-medium transition-all text-center shadow-lg shadow-yellow-500/30"
               >
                 Daftar
               </Link>

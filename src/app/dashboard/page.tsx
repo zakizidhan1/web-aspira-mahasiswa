@@ -38,7 +38,7 @@ export default async function DashboardPage() {
 
   return (
     <div className="space-y-8">
-      <div>
+      <div className="relative z-10">
         <h1 className="text-3xl font-bold text-white mb-2">Aspirasi Saya</h1>
         <p className="text-indigo-200">Kelola dan pantau status aspirasi yang telah Anda sampaikan.</p>
       </div>
@@ -64,7 +64,7 @@ export default async function DashboardPage() {
       ) : (
         <div className="grid grid-cols-1 gap-4">
           {aspirations.map((item) => (
-            <div key={item.id} className="bg-white/5 border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-white/10 transition-all group">
+            <div key={item.id} className="bg-black border border-white/10 rounded-2xl p-6 backdrop-blur-sm hover:bg-black/10 transition-all group">
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
                 <div className="flex-1">
                   <div className="flex items-center space-x-3 mb-2">

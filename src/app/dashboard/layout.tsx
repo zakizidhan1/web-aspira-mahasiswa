@@ -16,28 +16,30 @@ export default async function DashboardLayout({
   }
 
   return (
-    <div className="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row max-w-7xl mx-auto w-full">
+    <div className="bg-[url('/images/admin.png')] bg-no-repeat bg-cover bg-center relative">
+      <div className="bg-black/40 absolute inset-0"/>
+    <div className="min-h-[calc(100vh-4rem)] flex flex-col md:flex-row max-w-7xl mx-auto w-full relative z-10">
       {/* Sidebar */}
       <aside className="w-full md:w-64 flex-shrink-0 md:border-r border-white/10 p-4 space-y-2">
         <div className="mb-8 px-4 hidden md:block">
           <h2 className="text-lg font-semibold text-white">Dashboard</h2>
-          <p className="text-xs text-indigo-300 truncate">{user.email}</p>
+          <p className="text-xs text-yellow-300 truncate">{user.email}</p>
         </div>
 
         <nav className="flex md:flex-col gap-2 overflow-x-auto md:overflow-visible">
-          <Link 
-            href="/dashboard" 
-            className="flex items-center space-x-3 px-4 py-3 rounded-xl bg-white/5 text-white hover:bg-white/10 transition-colors whitespace-nowrap"
+          <Link
+            href="/dashboard"
+            className="flex items-center space-x-3 px-4 py-3 rounded-xl text-white hover:bg-red-700/50 transition-colors whitespace-nowrap"
           >
-            <LayoutDashboard className="w-5 h-5 text-indigo-400" />
+            <LayoutDashboard className="w-5 h-5 text-yellow-400" />
             <span className="font-medium">Overview</span>
           </Link>
-          
-          <Link 
-            href="/dashboard/tambah" 
-            className="flex items-center space-x-3 px-4 py-3 rounded-xl text-indigo-200 hover:bg-white/5 hover:text-white transition-colors whitespace-nowrap"
+
+          <Link
+            href="/dashboard/tambah"
+            className="flex items-center space-x-3 px-4 py-3 rounded-xl text-yellow-200 hover:bg-red-700/50 hover:text-white transition-colors whitespace-nowrap"
           >
-            <PlusCircle className="w-5 h-5 text-indigo-400" />
+            <PlusCircle className="w-5 h-5 text-yellow-400" />
             <span className="font-medium">Tulis Aspirasi</span>
           </Link>
         </nav>
@@ -48,5 +50,6 @@ export default async function DashboardLayout({
         {children}
       </main>
     </div>
+       </div>
   )
 }
