@@ -9,7 +9,7 @@ export default async function RegisterPage({
   const { message } = await searchParams
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[url('/images/login.png')] bg-no-repeat bg-cover bg-center relative  px-4">
+    <div className="min-h-screen flex items-center justify-center bg-[url('/images/login.webp')] bg-no-repeat bg-cover bg-center relative  px-4">
       <div className="absolute inset-0 bg-black/40"></div>
 
       <div className="max-w-md w-full bg-white/10 backdrop-blur-lg border border-white/20 rounded-2xl p-8 shadow-2xl relative z-10">

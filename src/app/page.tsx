@@ -3,7 +3,7 @@ import { ArrowRight, MessageSquarePlus, ShieldCheck, Users } from "lucide-react"
 
 export default function Home() {
   return (
-    <main className="bg-[url('/images/aspirasi.png')] bg-no-repeat bg-cover bg-center py-20 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center px-4 relative overflow-hidden">
+    <main className="bg-[url('/images/aspirasi.webp')] bg-no-repeat bg-cover bg-center py-20 flex flex-col items-center justify-center min-h-[calc(100vh-4rem)] text-center px-4 relative overflow-hidden">
       {/* Background decorations */}
       <div className="absolute top-0 bottom-0 right-0 left-0 bg-black/50" />
 

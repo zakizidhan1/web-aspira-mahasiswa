@@ -22,7 +22,7 @@ export default function NavbarClient({ isLoggedIn, isAdmin }: NavbarClientProps)
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
           <Link href="/" className="text-xl font-bold text-white tracking-tight flex justify-center items-center gap-2" onClick={closeMenu}>
-            <Image className='w-[30px]' src="/images/logo.png" alt="logo" width={100} height={100}/>Aspirasi<span className="text-yellow-400">UNSIKA</span>
+            <Image className='w-[30px]' src="/images/logo.webp" alt="logo" width={100} height={100} />Aspirasi<span className="text-yellow-400">UNSIKA</span>
           </Link>
 
           {/* Desktop Nav */}
